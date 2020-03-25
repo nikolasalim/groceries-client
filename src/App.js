@@ -1,14 +1,13 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store/store";
-
-import LandingPageContainer from "./components/LandingPageContainer";
+import MarketsListContainer from "./components/MarketsListContainer";
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <LandingPageContainer />
+        <MarketsListContainer />
       </Provider>
     );
   }
