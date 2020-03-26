@@ -1,13 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import MarketDetails from "./MarketDetails";
-import { getMarketProducts } from "../actions/productsActions";
+import { removeProduct, getMarketProducts } from "../actions/productsActions";
 
 class MarketDetailsContainer extends React.Component {
-  /*  componentDidMount() {
+  componentDidMount() {
     const { marketId } = this.props.match.params;
     this.props.getMarketProducts(marketId);
-  } */
+  }
+
+  stockHandler = productId => {
+    const { marketId } = this.props.match.params;
+    this.props.removeProduct(marketId, productId);
+    console.log("stockhandler is running");
+  };
 
   render() {
     const { marketId } = this.props.match.params;
@@ -17,17 +23,19 @@ class MarketDetailsContainer extends React.Component {
 
     return (
       <MarketDetails
-        marketInfo={marketInfo} /* products={this.props.products} */
+        marketInfo={marketInfo}
+        products={this.props.products}
+        stockHandler={this.stockHandler}
       />
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { markets: state.markets /* , products: state.products */ };
+  return { markets: state.markets, products: state.products };
 }
 
-const mapDispatchToProps = { getMarketProducts };
+const mapDispatchToProps = { removeProduct, getMarketProducts };
 
 export default connect(
   mapStateToProps,
