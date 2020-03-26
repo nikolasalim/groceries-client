@@ -8,19 +8,11 @@ class SearchBarContainer extends React.Component {
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    // console.log("state now is", this.state);
   };
 
   onSubmit = event => {
     event.preventDefault();
     this.props.getSearchedMarkets(this.state.search);
-    // create action for market's reducer
-    ///// split reducer into two, so I can have both info? list & searched
-    // that takes this states and sends in the req.body as a parameter
-    // and send a get request to backend
-
-    // so that on backend I can query with 'findAll where name: req.body'
-    //
   };
 
   render() {

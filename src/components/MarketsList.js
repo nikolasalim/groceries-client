@@ -1,10 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class MarketsList extends React.Component {
   render() {
     return this.props.markets.map(market => {
-      return <div key={market.id}>{market.name}</div>;
+      return (
+        <Link to={`/market/${market.id}`} key={market.id}>
+          <div>{market.name}</div>
+        </Link>
+      );
     });
   }
 }
