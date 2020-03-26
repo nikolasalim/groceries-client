@@ -2,11 +2,15 @@ import React from "react";
 
 class MarketDetails extends React.Component {
   render() {
-    const { name } = this.props.marketInfo;
+    const { name, oosProducts, id } = this.props.marketInfo;
+    console.log("this.props.marketInfo is:", this.props.marketInfo);
 
     return (
       <div>
-        This is the detail page for {name} with id {this.props.marketId}
+        <h3>{name}</h3>
+        {oosProducts.map(product => (
+          <div key={product.id}>{product.name}</div>
+        ))}
       </div>
     );
   }
