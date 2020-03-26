@@ -1,8 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import { Switch, Route } from "react-router-dom";
+import MarketsListContainer from "./components/MarketsListContainer";
+import NavBarContainer from "./components/NavBarContainer";
+import MarketDetailsContainer from "./components/MarketDetailsContainer";
 
 class App extends React.Component {
   render() {
-    return <h1>Hello world</h1>;
+    return (
+      <Provider store={store}>
+        <NavBarContainer />
+        <Switch>
+          <Route path="/market/:marketId" component={MarketDetailsContainer} />
+          <Route path="/" component={MarketsListContainer} />
+        </Switch>
+      </Provider>
+    );
   }
 }
 
