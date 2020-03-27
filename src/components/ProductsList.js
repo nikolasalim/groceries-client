@@ -1,12 +1,9 @@
 import React from "react";
 
-class MarketDetails extends React.Component {
+class ProductsList extends React.Component {
   render() {
-    const { name } = this.props.marketInfo;
-
     return (
       <div>
-        <h3>{name}</h3>
         {this.props.products.map(product => {
           return (
             <div key={product.id}>
@@ -23,4 +20,4 @@ class MarketDetails extends React.Component {
   }
 }
 
-export default MarketDetails;
+export default ProductsList;

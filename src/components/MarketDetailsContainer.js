@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import MarketDetails from "./MarketDetails";
+import ProductsList from "./ProductsList";
 import { removeProduct, getMarketProducts } from "../actions/productsActions";
+import SearchBarProductsContainer from "./SearchBarProductsContainer";
 
 class MarketDetailsContainer extends React.Component {
   componentDidMount() {
@@ -21,12 +22,25 @@ class MarketDetailsContainer extends React.Component {
       market => market.id === parseInt(marketId)
     );
 
+    if (this.props.products.searched.length === 0) {
+      return (
+        <div>
+          <SearchBarProductsContainer marketId={marketId} />
+          <ProductsList
+            products={this.props.products.list}
+            stockHandler={this.stockHandler}
+          />
+        </div>
+      );
+    }
     return (
-      <MarketDetails
-        marketInfo={marketInfo}
-        products={this.props.products}
-        stockHandler={this.stockHandler}
-      />
+      <div>
+        <SearchBarProductsContainer marketId={marketId} />
+        <ProductsList
+          products={this.props.products.searched}
+          stockHandler={this.stockHandler}
+        />
+      </div>
     );
   }
 }

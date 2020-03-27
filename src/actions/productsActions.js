@@ -20,6 +20,29 @@ export const getMarketProducts = marketId => (dispatch, getState) => {
     .catch(console.error);
 };
 
+// Reading searched markets
+
+export const GET_SEARCHED_PRODUCTS = "GET_SEARCHED_PRODUCTS";
+function gettingSearchedProducts(payload) {
+  return {
+    type: GET_SEARCHED_PRODUCTS,
+    payload
+  };
+}
+
+export const getSearchedProducts = (marketId, keyword) => (
+  dispatch,
+  getState
+) => {
+  request
+    .get(`${baseUrl}/${marketId}/product`, { searched: keyword })
+    .then(response => {
+      const action = gettingSearchedProducts(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
 // Removing a product from the Out of Stock list:
 
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
@@ -31,8 +54,6 @@ function removingProduct(payload) {
 }
 
 export const removeProduct = (marketId, productId) => (dispatch, getState) => {
-  console.log("removeProduct is running");
-
   request
     .delete(`${baseUrl}/${marketId}/product/${productId}`)
     .then(response => {

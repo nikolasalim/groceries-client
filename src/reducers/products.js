@@ -1,15 +1,15 @@
-export default function(state = [], action = {}) {
+export default function(state = { list: [], searched: [] }, action = {}) {
   switch (action.type) {
     case "GET_MARKET_PRODUCTS":
-      return action.payload;
+      return { ...state, list: action.payload };
     case "REMOVE_PRODUCT":
-      // console.log("action.payload is:", action.payload);
-
       const updatedState = state.filter(
         product => product.id !== parseInt(action.payload)
       );
-      console.log("updatedState is:", updatedState);
       return updatedState;
+    case "GET_SEARCHED_PRODUCTS":
+      console.log("action.payload in GET_SEARCHED_PRODUCTS is", action.payload);
+      return { ...state, searched: action.payload };
     default:
       return state;
   }
