@@ -43,6 +43,55 @@ export const getSearchedProducts = (marketId, keyword) => (
     .catch(console.error);
 };
 
+// Creating new product:
+
+export const ADD_PRODUCT = "ADD_PRODUCT";
+function addingProduct(payload) {
+  return {
+    type: ADD_PRODUCT,
+    payload
+  };
+}
+
+export const addProduct = (product /* , marketId, productId */) => (
+  dispatch,
+  getState
+) => {
+  request
+    .post(`${baseUrl}/product`)
+    .send(product)
+    .then(response => {
+      const action = addingProduct(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
+// Updating a new product in the Out of Stock list:
+
+export const UPDATE_PRODUCT_STOCK = "UPDATE_PRODUCT_STOCK";
+function updatingProductStock(payload) {
+  return {
+    type: UPDATE_PRODUCT_STOCK,
+    payload
+  };
+}
+
+export const updateProductStock = (marketId /* , productId */) => (
+  dispatch,
+  getState
+) => {
+  console.log("marketId is:", marketId);
+
+  request
+    .put(`${baseUrl}/${marketId}/product/${11}`)
+    .then(response => {
+      const action = updatingProductStock(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
 // Removing a product from the Out of Stock list:
 
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
@@ -58,20 +107,7 @@ export const removeProduct = (marketId, productId) => (dispatch, getState) => {
     .delete(`${baseUrl}/${marketId}/product/${productId}`)
     .then(response => {
       const action = removingProduct(response.body);
-      console.log("response body is", response.body);
       dispatch(action);
     })
     .catch(console.error);
 };
-
-// export const deleteImage = (deletedImage, id) => (dispatch, getState) => {
-//   request
-//     .delete(`${baseUrl}/image/${id}`)
-//     .send(deletedImage)
-//     .then(response => {
-//       const action = deletingImage(response.body);
-//       console.log("response body in action is:", response.body);
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };

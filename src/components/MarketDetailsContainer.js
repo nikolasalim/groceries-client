@@ -13,7 +13,6 @@ class MarketDetailsContainer extends React.Component {
   stockHandler = productId => {
     const { marketId } = this.props.match.params;
     this.props.removeProduct(marketId, productId);
-    console.log("stockhandler is running");
   };
 
   render() {
@@ -29,6 +28,7 @@ class MarketDetailsContainer extends React.Component {
           <ProductsList
             products={this.props.products.list}
             stockHandler={this.stockHandler}
+            marketId={marketId}
           />
         </div>
       );
@@ -39,6 +39,7 @@ class MarketDetailsContainer extends React.Component {
         <ProductsList
           products={this.props.products.searched}
           stockHandler={this.stockHandler}
+          marketId={marketId}
         />
       </div>
     );

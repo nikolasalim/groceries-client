@@ -13,6 +13,7 @@ class SearchBarMarketsContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.getSearchedMarkets(this.state.search);
+    this.setState({ search: "" });
   };
 
   render() {

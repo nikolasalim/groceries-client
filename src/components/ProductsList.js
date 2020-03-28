@@ -1,4 +1,5 @@
 import React from "react";
+import AddProductFormContainer from "./AddProductFormContainer";
 
 class ProductsList extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class ProductsList extends React.Component {
             </div>
           );
         })}
-        <button onClick={this.props.addProductHandler}>Add Product</button>
+        <AddProductFormContainer marketId={this.props.marketId} />
       </div>
     );
   }
