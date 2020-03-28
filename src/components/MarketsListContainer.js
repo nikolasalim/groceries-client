@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getAllMarkets } from "../actions/marketsActions";
 import MarketsList from "./MarketsList";
-import SearchBarContainer from "./SearchBarContainer";
+import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 
 class MarketsListContainer extends React.Component {
   componentDidMount() {
@@ -13,14 +13,14 @@ class MarketsListContainer extends React.Component {
     if (this.props.markets.searched.length === 0) {
       return (
         <div>
-          <SearchBarContainer />
+          <SearchBarMarketsContainer />
           <MarketsList markets={this.props.markets.list} />
         </div>
       );
     }
     return (
       <div>
-        <SearchBarContainer />
+        <SearchBarMarketsContainer />
         <MarketsList markets={this.props.markets.searched} />
       </div>
     );

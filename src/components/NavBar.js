@@ -1,13 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class NavBar extends React.Component {
+  handleClick = () => {
+    this.props.markets.searched = [];
+  };
+
   render() {
     return (
       <div>
-        <span>LOGO</span> <span>MENU</span>
+        <span>
+          <Link to="/" onClick={this.handleClick}>
+            LOGO
+          </Link>
+        </span>
+        <span>MENU</span>
       </div>
     );
   }
 }
 
-export default NavBar;
+function mapStateToProps(state) {
+  return { markets: state.markets };
+}
+export default connect(mapStateToProps)(NavBar);
+
+// export default NavBar;

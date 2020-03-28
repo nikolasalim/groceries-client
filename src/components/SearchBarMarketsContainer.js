@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { connect } from "react-redux";
 import { getSearchedMarkets } from "../actions/marketsActions";
 
-class SearchBarContainer extends React.Component {
+class SearchBarMarketsContainer extends React.Component {
   state = { search: "" };
 
   onChange = event => {
@@ -13,11 +13,13 @@ class SearchBarContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.getSearchedMarkets(this.state.search);
+    this.setState({ search: "" });
   };
 
   render() {
     return (
       <SearchBar
+        placeholder="Search markets"
         onChange={this.onChange}
         onSubmit={this.onSubmit}
         searchRequest={this.state.search}
@@ -28,4 +30,4 @@ class SearchBarContainer extends React.Component {
 
 const mapDispatchToProps = { getSearchedMarkets };
 
-export default connect(null, mapDispatchToProps)(SearchBarContainer);
+export default connect(null, mapDispatchToProps)(SearchBarMarketsContainer);

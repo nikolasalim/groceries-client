@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
           type="search"
           name="search"
           value={this.props.searchRequest}
-          placeholder="Search markets"
+          placeholder={this.props.placeholder}
           onChange={this.props.onChange}
         ></input>
       </form>
