@@ -53,44 +53,36 @@ function addingProduct(payload) {
   };
 }
 
-export const addProduct = (product /* , marketId, productId */) => (
-  dispatch,
-  getState
-) => {
+export const addProduct = (product, marketId) => (dispatch, getState) => {
   request
     .post(`${baseUrl}/product`)
     .send(product)
     .then(response => {
-      const action = addingProduct(response.body);
-      dispatch(action);
+      product.id = response.body.id;
+      request
+        .put(`${baseUrl}/${marketId}/product/${response.body.id}`)
+
+        .then(response => {
+          const action = addingProduct(product);
+          dispatch(action);
+        });
     })
     .catch(console.error);
 };
 
-// Updating a new product in the Out of Stock list:
-
-export const UPDATE_PRODUCT_STOCK = "UPDATE_PRODUCT_STOCK";
-function updatingProductStock(payload) {
-  return {
-    type: UPDATE_PRODUCT_STOCK,
-    payload
-  };
-}
-
-export const updateProductStock = (marketId /* , productId */) => (
-  dispatch,
-  getState
-) => {
-  console.log("marketId is:", marketId);
-
-  request
-    .put(`${baseUrl}/${marketId}/product/${11}`)
-    .then(response => {
-      const action = updatingProductStock(response.body);
-      dispatch(action);
-    })
-    .catch(console.error);
-};
+// export const addProduct = (product /* , marketId, productId */) => (
+//   dispatch,
+//   getState
+// ) => {
+//   request
+//     .post(`${baseUrl}/product`)
+//     .send(product)
+//     .then(response => {
+//       const action = addingProduct(response.body);
+//       dispatch(action);
+//     })
+//     .catch(console.error);
+// };
 
 // Removing a product from the Out of Stock list:
 
