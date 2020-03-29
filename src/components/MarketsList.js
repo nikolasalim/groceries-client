@@ -1,34 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Getting user's current position:
+
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
 };
+
+let coord = {
+  lat: null,
+  lng: null
+};
+
 function success(pos) {
-  const crd = pos.coords;
-  // console.log("Your current position is:");
-  // console.log(`Latitude : ${crd.latitude}`);
-  // console.log(`Longitude: ${crd.longitude}`);
-  // console.log(`More or less ${crd.accuracy} meters.`);
-  const myCoordenates = { lat: crd.latitude, lng: crd.longitude };
-  return myCoordenates;
+  coord = {
+    latitude: pos.coords.latitude,
+    longitude: pos.coords.longitude
+  };
+  return coord;
 }
+
 function error(err) {
+  console.log("error is running");
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
-const result = navigator.geolocation.getCurrentPosition(
-  success,
-  error,
-  options
-);
+
+// navigator.geolocation.getCurrentPosition(success, error, options);
 
 // Getting distance between two coordenates:
 
 function getDistanceInKm(lat1, lon1, lat2, lon2) {
-  const R = 6371; // Radius of the earth in km
-  const dLat = deg2rad(lat2 - lat1); // deg2rad below
+  const R = 6371;
+  const dLat = deg2rad(lat2 - lat1);
   const dLon = deg2rad(lon2 - lon1);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -46,35 +51,34 @@ function deg2rad(deg) {
 }
 
 class MarketsList extends React.Component {
-  render() {
-    // const marketsDistanceFromMe = this.props.markets.map(market => {
-    //   return getDistanceInKm(
-    //     52.373107499999996,
-    //     4.856551,
-    //     market.latitude,
-    //     market.longitude
-    //   );
-    // });
+  state = { gotLocation: false };
 
-    const sorted = this.props.markets.sort((a, b) => {
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    setTimeout(() => this.setState({ gotLocation: true }), 3000);
+  }
+
+  render() {
+    const marketsSorted = this.props.markets.sort((a, b) => {
       a = getDistanceInKm(
-        52.373107499999996,
-        4.856551,
+        coord.latitude,
+        coord.longitude,
         a.latitude,
         a.longitude
       );
       b = getDistanceInKm(
-        52.373107499999996,
-        4.856551,
+        coord.latitude,
+        coord.longitude,
         b.latitude,
         b.longitude
       );
       return a - b;
     });
 
-    console.log("sorted is:", sorted);
-
-    return this.props.markets.map(market => {
+    if (!this.state.gotLocation) {
+      return <h1>Loading...</h1>;
+    }
+    return marketsSorted.map(market => {
       return (
         <Link to={`/market/${market.id}`} key={market.id}>
           <div>{market.name}</div>
@@ -85,3 +89,19 @@ class MarketsList extends React.Component {
 }
 
 export default MarketsList;
+
+// const marketsSorted = this.props.markets.sort((a, b) => {
+//   a = getDistanceInKm(
+//     52.373107499999996,
+//     4.856551,
+//     a.latitude,
+//     a.longitude
+//   );
+//   b = getDistanceInKm(
+//     52.373107499999996,
+//     4.856551,
+//     b.latitude,
+//     b.longitude
+//   );
+//   return a - b;
+// });
