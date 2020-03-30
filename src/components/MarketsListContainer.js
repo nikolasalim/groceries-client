@@ -22,6 +22,7 @@ function success(pos) {
     latitude: pos.coords.latitude,
     longitude: pos.coords.longitude
   };
+  // console.log("coordenates are:", coord);
   return coord;
 }
 
@@ -56,18 +57,20 @@ function deg2rad(deg) {
 }
 
 class MarketsListContainer extends React.Component {
-  // componentWillMount() {
-  //   navigator.geolocation.getCurrentPosition(success, error, options);
-  // }
-
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    const navigatorTest = navigator.geolocation.getCurrentPosition(
+      success,
+      error,
+      options
+    );
+    console.log("navigator is:", navigatorTest);
+
     this.props.getAllMarkets();
     // setTimeout(() => this.props.getAllMarkets(), 3000);
   }
 
   componentDidUpdate() {
-    if (coord.lat === null || coord.long === null) {
+    if (coord.lat === null || coord.lng === null) {
       this.props.getAllMarkets();
     }
   }

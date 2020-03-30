@@ -1,10 +1,10 @@
 import React from "react";
 import AddForm from "./AddForm";
 import { connect } from "react-redux";
-import { addProduct } from "../actions/productsActions";
+// import { addProduct } from "../actions/productsActions";
 
-class AddProductFormContainer extends React.Component {
-  state = { name: "" };
+class AddMarketFormContainer extends React.Component {
+  state = { name: "", latitude: null, longitude: null };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -12,7 +12,7 @@ class AddProductFormContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.addProduct(this.state, parseInt(this.props.marketId));
+    // this.props.addProduct(this.state, parseInt(this.props.marketId));
     this.setState({ name: "" });
   };
 
@@ -29,12 +29,14 @@ class AddProductFormContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { products: state.products };
+  return { markets: state.markets };
 }
 
-const mapDispatchToProps = { addProduct };
+const mapDispatchToProps = {
+  /* addProduct */
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddProductFormContainer);
+)(AddMarketFormContainer);

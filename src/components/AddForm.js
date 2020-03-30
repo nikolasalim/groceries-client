@@ -1,13 +1,13 @@
 import React from "react";
 
-class AddProductForm extends React.Component {
+class AddForm extends React.Component {
   render() {
     return (
       <div>
         <form onSubmit={this.props.onSubmit}>
           <input
             name="name"
-            placeholder="Add product"
+            placeholder={this.props.placeholder}
             value={this.props.values.name}
             onChange={this.props.onChange}
           ></input>
@@ -18,4 +18,4 @@ class AddProductForm extends React.Component {
   }
 }
 
-export default AddProductForm;
+export default AddForm;
