@@ -58,12 +58,7 @@ function deg2rad(deg) {
 
 class MarketsListContainer extends React.Component {
   componentDidMount() {
-    const navigatorTest = navigator.geolocation.getCurrentPosition(
-      success,
-      error,
-      options
-    );
-    console.log("navigator is:", navigatorTest);
+    navigator.geolocation.getCurrentPosition(success, error, options);
 
     this.props.getAllMarkets();
     // setTimeout(() => this.props.getAllMarkets(), 3000);
@@ -94,7 +89,6 @@ class MarketsListContainer extends React.Component {
 
       return a - b;
     });
-    // console.log("sorted is", sorted);
     return sorted;
   };
 
@@ -109,6 +103,15 @@ class MarketsListContainer extends React.Component {
           <SearchBarMarketsContainer />
           <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
           {/* <MarketsList markets={this.props.markets.list} /> */}
+          <button>Add market</button>
+          <div>
+            Are you already in the supermarket?
+            <form>
+              <input placeholder="name"></input>
+            </form>
+            <button>Add it to the list</button>
+          </div>
+          <p>Add a new supermarket to the list</p>
         </div>
       );
     }
