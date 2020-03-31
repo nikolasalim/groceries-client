@@ -1,5 +1,6 @@
 import request from "superagent";
 const baseUrl = "http://localhost:4000";
+const googleKey = "AIzaSyAPU3Byc-ML0f-09-kZZsbiAgMQEHtGg_4";
 
 // Reading all markets:
 
@@ -53,3 +54,23 @@ export const getSearchedMarkets = keyword => (dispatch, getState) => {
 //     })
 //     .catch(console.error);
 // };
+
+// Fetching searched markets results
+
+export const FETCH_MARKETS = "FETCH_MARKETS";
+function fetchingMarkets(payload) {
+  return {
+    type: FETCH_MARKETS,
+    payload
+  };
+}
+
+export const fetchMarkets = input => (dispatch, getState) => {
+  request
+    .get(`${baseUrl}/find`, { searched: input })
+    .then(response => {
+      const action = fetchingMarkets(JSON.parse(response.body).results);
+      dispatch(action);
+    })
+    .catch(console.error);
+};

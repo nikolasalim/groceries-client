@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { getAllMarkets } from "../actions/marketsActions";
 import MarketsList from "./MarketsList";
 import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
@@ -22,7 +23,7 @@ function success(pos) {
     latitude: pos.coords.latitude,
     longitude: pos.coords.longitude
   };
-  // console.log("coordenates are:", coord);
+  // console.log("my coordenates are:", coord);
   return coord;
 }
 
@@ -57,11 +58,11 @@ function deg2rad(deg) {
 }
 
 class MarketsListContainer extends React.Component {
+  state = { addMarketsRedirect: false };
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(success, error, options);
-
     this.props.getAllMarkets();
-    // setTimeout(() => this.props.getAllMarkets(), 3000);
   }
 
   componentDidUpdate() {
@@ -92,6 +93,12 @@ class MarketsListContainer extends React.Component {
     return sorted;
   };
 
+  renderRedirect = () => {
+    if (this.state.addMarketsRedirect) {
+      return <Redirect to="/add-market" />;
+    }
+  };
+
   render() {
     if (this.props.markets.list.length === 0) {
       return <h1>Loading...</h1>;
@@ -100,28 +107,30 @@ class MarketsListContainer extends React.Component {
     if (this.props.markets.searched.length === 0) {
       return (
         <div>
+          {this.renderRedirect()}
+          Markets close to you:
           <SearchBarMarketsContainer />
           <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
-          {/* <MarketsList markets={this.props.markets.list} /> */}
-          <button>Add market</button>
-          <div>
-            Are you already in the supermarket?
-            <form>
-              <input placeholder="name"></input>
-            </form>
-            <button>Add it to the list</button>
-          </div>
-          <p>Add a new supermarket to the list</p>
+          <button
+            onClick={() =>
+              this.setState({
+                addMarketsRedirect: true
+              })
+            }
+          >
+            Add new market
+          </button>
         </div>
       );
     }
     return (
       <div>
+        Markets close to you:
         <SearchBarMarketsContainer />
         <MarketsList
           markets={this.sortingMarkets(this.props.markets.searched)}
         />
-        {/* <MarketsList markets={this.props.markets.searched} /> */}
+        <button>Add new market</button>
       </div>
     );
   }

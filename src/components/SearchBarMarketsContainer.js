@@ -19,7 +19,7 @@ class SearchBarMarketsContainer extends React.Component {
   render() {
     return (
       <SearchBar
-        placeholder="Search markets"
+        placeholder="Search markets below:"
         onChange={this.onChange}
         onSubmit={this.onSubmit}
         searchRequest={this.state.search}
