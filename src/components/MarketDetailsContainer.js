@@ -17,9 +17,6 @@ class MarketDetailsContainer extends React.Component {
 
   render() {
     const { marketId } = this.props.match.params;
-    const marketInfo = this.props.markets.list.find(
-      market => market.id === parseInt(marketId)
-    );
 
     if (this.props.products.searched.length === 0) {
       return (

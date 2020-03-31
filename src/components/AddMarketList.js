@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createMarket } from "../actions/marketsActions";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 class AddMarketList extends React.Component {
   // state = {

@@ -1,6 +1,5 @@
 import request from "superagent";
 const baseUrl = "http://localhost:4000";
-const googleKey = "AIzaSyAPU3Byc-ML0f-09-kZZsbiAgMQEHtGg_4";
 
 // Reading all markets:
 
