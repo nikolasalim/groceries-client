@@ -95,6 +95,7 @@ class MarketsListContainer extends React.Component {
 
   renderRedirect = () => {
     if (this.state.addMarketsRedirect) {
+      console.log("state is:", this.state);
       return <Redirect to="/add-market" />;
     }
   };
@@ -125,12 +126,21 @@ class MarketsListContainer extends React.Component {
     }
     return (
       <div>
+        {this.renderRedirect()}
         Markets close to you:
         <SearchBarMarketsContainer />
         <MarketsList
           markets={this.sortingMarkets(this.props.markets.searched)}
         />
-        <button>Add new market</button>
+        <button
+          onClick={() =>
+            this.setState({
+              addMarketsRedirect: true
+            })
+          }
+        >
+          Add new market
+        </button>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import MarketsListContainer from "./components/MarketsListContainer";
 import NavBarContainer from "./components/NavBarContainer";
 import MarketDetailsContainer from "./components/MarketDetailsContainer";
 import AddMarketContainer from "./components/AddMarketContainer";
+import MapContainer from "./components/MapContainer";
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/market/:marketId" component={MarketDetailsContainer} />
           <Route path="/add-market" component={AddMarketContainer} />
+          <Route path="/map" component={MapContainer} />
           <Route path="/" component={MarketsListContainer} />
         </Switch>
       </Provider>

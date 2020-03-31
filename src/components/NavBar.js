@@ -16,6 +16,9 @@ class NavBar extends React.Component {
           </Link>
         </span>
         <span>MENU</span>
+        <span>
+          <Link to="/map">MAP</Link>
+        </span>
       </div>
     );
   }

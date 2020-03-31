@@ -74,3 +74,24 @@ export const fetchMarkets = input => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+// Creating a market:
+
+export const CREATE_MARKET = "CREATE_MARKET";
+function creatingMarket(payload) {
+  return {
+    type: CREATE_MARKET,
+    payload
+  };
+}
+
+export const createMarket = market => (dispatch, getState) => {
+  request
+    .post(`${baseUrl}/market`)
+    .send(market)
+    .then(response => {
+      const action = creatingMarket(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};

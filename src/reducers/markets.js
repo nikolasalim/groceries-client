@@ -9,6 +9,8 @@ export default function(
       return { ...state, searched: action.payload };
     case "FETCH_MARKETS":
       return { ...state, fetched: action.payload };
+    case "ADD_MARKET":
+      return { ...state, list: [...state.list, action.payload], searched: [] };
     default:
       return state;
   }
