@@ -10,21 +10,17 @@ export let coord = {
 };
 
 export function success(pos) {
-  console.log("success is running");
   coord = {
     latitude: pos.coords.latitude,
     longitude: pos.coords.longitude
   };
-  console.log("my coordenates are:", coord);
   return coord;
 }
 
 export function error(err) {
-  console.log("error is running");
   coord = {
     latitude: "blocked",
     longitude: "blocked"
   };
-  console.log("error is running");
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }

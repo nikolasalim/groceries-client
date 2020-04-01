@@ -1,8 +1,8 @@
 import React from "react";
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
-const {
-  MarkerWithLabel
-} = require("react-google-maps/lib/components/addons/MarkerWithLabel");
+// const {
+//   MarkerWithLabel
+// } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
 
 const options = {
   enableHighAccuracy: true,

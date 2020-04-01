@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { getAllMarkets } from "../actions/marketsActions";
 import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 import MarketsSearchResultsList from "./MarketsSearchResultsList";
 
