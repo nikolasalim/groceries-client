@@ -1,5 +1,8 @@
 import React from "react";
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
+const {
+  MarkerWithLabel
+} = require("react-google-maps/lib/components/addons/MarkerWithLabel");
 
 const options = {
   enableHighAccuracy: true,
@@ -39,6 +42,7 @@ class Map extends React.Component {
       <GoogleMap
         defaultZoom={14}
         defaultCenter={{ lat: coord.lat, lng: coord.lng }}
+        // defaultOptions={{styles: [object]}}
       >
         {this.props.markets.list.map(market => {
           return (
@@ -48,6 +52,10 @@ class Map extends React.Component {
                 lat: Number(market.latitude),
                 lng: Number(market.longitude)
               }}
+              icon={{
+                url: "./media/cart.png",
+                scaledSize: new window.google.maps.Size(25, 25)
+              }}
               onClick={() => {
                 this.setState({ selectedMarket: market });
                 console.log("state is", this.state);
@@ -55,6 +63,16 @@ class Map extends React.Component {
             />
           );
         })}
+
+        <Marker
+          position={{ lat: coord.lat, lng: coord.lng }}
+          icon={{
+            url: "./media/person.png",
+            scaledSize: new window.google.maps.Size(25, 25)
+          }}
+        >
+          <div>You are here</div>
+        </Marker>
 
         {this.state.selectedMarket && (
           <InfoWindow
