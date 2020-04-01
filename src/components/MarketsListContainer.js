@@ -102,15 +102,29 @@ class MarketsListContainer extends React.Component {
 
   render() {
     if (this.props.markets.list.length === 0) {
-      return <h1>Loading...</h1>;
+      return (
+        <div>
+          {this.renderRedirect()}
+          No markets have been added yet.
+          <button
+            onClick={() =>
+              this.setState({
+                addMarketsRedirect: true
+              })
+            }
+          >
+            Add new market
+          </button>
+        </div>
+      );
     }
 
     if (this.props.markets.searched.length === 0) {
       return (
         <div>
           {this.renderRedirect()}
-          Markets close to you:
           <SearchBarMarketsContainer />
+          Markets close to you:
           <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
           <button
             onClick={() =>
