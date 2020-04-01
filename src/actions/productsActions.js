@@ -20,7 +20,7 @@ export const getMarketProducts = marketId => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// Reading searched markets
+// Reading products for searched markets
 
 export const GET_SEARCHED_PRODUCTS = "GET_SEARCHED_PRODUCTS";
 function gettingSearchedProducts(payload) {
@@ -69,20 +69,6 @@ export const addProduct = (product, marketId) => (dispatch, getState) => {
     })
     .catch(console.error);
 };
-
-// export const addProduct = (product /* , marketId, productId */) => (
-//   dispatch,
-//   getState
-// ) => {
-//   request
-//     .post(`${baseUrl}/product`)
-//     .send(product)
-//     .then(response => {
-//       const action = addingProduct(response.body);
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };
 
 // Removing a product from the Out of Stock list:
 

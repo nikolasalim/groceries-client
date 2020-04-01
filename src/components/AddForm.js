@@ -11,7 +11,6 @@ class AddForm extends React.Component {
             value={this.props.values.name}
             onChange={this.props.onChange}
           ></input>
-          {/* <button type="submit">Add</button> */}
         </form>
       </div>
     );

@@ -40,20 +40,6 @@ export const getSearchedMarkets = keyword => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// export const getSearchedMarkets = searchRequest => (dispatch, getState) => {
-//   request(`${baseUrl}/market/${searchRequest}`)
-//     .send(searchRequest)
-//     .then(response => {
-//       // const data = { body: response.body, searchRequest: searchRequest };
-//       // data.searchRequest = searchRequest;
-//       // console.log("data is:", data);
-
-//       const action = gettingSearchedMarkets(response.body);
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };
-
 // Fetching searched markets results
 
 export const FETCH_MARKETS = "FETCH_MARKETS";
