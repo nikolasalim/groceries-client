@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 class NavBar extends React.Component {
   handleClick = () => {
     this.props.markets.searched = [];
+    this.props.markets.fetched = [];
   };
 
   render() {
@@ -15,7 +16,6 @@ class NavBar extends React.Component {
             LOGO
           </Link>
         </span>
-        <span>MENU</span>
         <span>
           <Link to="/map">MAP</Link>
         </span>
@@ -28,5 +28,3 @@ function mapStateToProps(state) {
   return { markets: state.markets };
 }
 export default connect(mapStateToProps)(NavBar);
-
-// export default NavBar;

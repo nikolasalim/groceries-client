@@ -7,6 +7,7 @@ import NavBarContainer from "./components/NavBarContainer";
 import MarketDetailsContainer from "./components/MarketDetailsContainer";
 import AddMarketContainer from "./components/AddMarketContainer";
 import MapContainer from "./components/MapContainer";
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <Route path="/map" component={MapContainer} />
           <Route path="/" component={MarketsListContainer} />
         </Switch>
+        <Footer />
       </Provider>
     );
   }

@@ -7,37 +7,6 @@ import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
-// Getting user's current position:
-
-// const options = {
-//   enableHighAccuracy: true,
-//   timeout: 5000,
-//   maximumAge: 0
-// };
-
-// let coord = {
-//   lat: null,
-//   lng: null
-// };
-
-// function success(pos) {
-//   coord = {
-//     latitude: pos.coords.latitude,
-//     longitude: pos.coords.longitude
-//   };
-//   // console.log("my coordenates are:", coord);
-//   return coord;
-// }
-
-// function error(err) {
-//   coord = {
-//     latitude: "blocked",
-//     longitude: "blocked"
-//   };
-//   console.log("error is running");
-//   console.warn(`ERROR(${err.code}): ${err.message}`);
-// }
-
 class MarketsListContainer extends React.Component {
   state = { addMarketsRedirect: false };
 
