@@ -52,8 +52,8 @@ class MarketsListContainer extends React.Component {
     }
     return (
       <div>
-        Markets close to you:
         <SearchBarMarketsContainer />
+        Markets close to you:
         <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
       </div>
     );

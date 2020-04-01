@@ -38,7 +38,7 @@ class AddMarketList extends React.Component {
                   this.renderRedirect();
                 }}
               >
-                Add
+                Yes!
               </button>
             </div>
           );

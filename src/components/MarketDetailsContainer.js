@@ -26,12 +26,26 @@ class MarketDetailsContainer extends React.Component {
   render() {
     const { marketId } = this.props.match.params;
 
+    if (this.props.products.list.length === 0) {
+      return (
+        <div>
+          <h3>{this.getName(this.props.markets.list)}</h3>
+          Currently out-of-stock:
+          <ProductsList
+            products={this.props.products.list}
+            stockHandler={this.stockHandler}
+            marketId={marketId}
+          />
+        </div>
+      );
+    }
+
     if (this.props.products.searched.length === 0) {
       return (
         <div>
           <h3>{this.getName(this.props.markets.list)}</h3>
-          <SearchBarProductsContainer marketId={marketId} />
           Currently out-of-stock:
+          <SearchBarProductsContainer marketId={marketId} />
           <ProductsList
             products={this.props.products.list}
             stockHandler={this.stockHandler}

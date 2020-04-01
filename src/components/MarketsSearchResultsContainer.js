@@ -21,17 +21,8 @@ class MarketsSearchResultsContainer extends React.Component {
         <div>
           {this.renderAddMarketRedirect()}
           <SearchBarMarketsContainer />
-          This market is not on our system yet. Add it now:
+          Is this the market you're looking for?
           <AddMarketlist marketsFetched={this.props.markets.fetched} />
-          <button
-            onClick={() =>
-              this.setState({
-                addMarketsRedirect: true
-              })
-            }
-          >
-            Add new market
-          </button>
         </div>
       );
     }
@@ -49,7 +40,7 @@ class MarketsSearchResultsContainer extends React.Component {
             })
           }
         >
-          Add new market
+          Find it
         </button>
       </div>
     );
