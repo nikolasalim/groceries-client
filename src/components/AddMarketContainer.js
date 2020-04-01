@@ -26,9 +26,9 @@ class AddMarketContainer extends React.Component {
   render() {
     return (
       <div>
-        Add a new market:
+        Find and add a new market:
         <AddForm
-          placeholder={"Add market"}
+          placeholder={"Find market"}
           onSubmit={this.onSubmit}
           onChange={this.onChange}
           values={this.state}

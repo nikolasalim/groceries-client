@@ -22,6 +22,24 @@ export const getAllMarkets = () => (dispatch, getState) => {
 
 // Reading searched markets
 
+// export const GET_SEARCHED_MARKETS = "GET_SEARCHED_MARKETS";
+// function gettingSearchedMarkets(payload) {
+//   return {
+//     type: GET_SEARCHED_MARKETS,
+//     payload
+//   };
+// }
+
+// export const getSearchedMarkets = keyword => (dispatch, getState) => {
+//   request
+//     .get(`${baseUrl}/market`, { searched: keyword })
+//     .then(response => {
+//       const action = gettingSearchedMarkets(response.body);
+//       dispatch(action);
+//     })
+//     .catch(console.error);
+// };
+
 export const GET_SEARCHED_MARKETS = "GET_SEARCHED_MARKETS";
 function gettingSearchedMarkets(payload) {
   return {
@@ -34,8 +52,15 @@ export const getSearchedMarkets = keyword => (dispatch, getState) => {
   request
     .get(`${baseUrl}/market`, { searched: keyword })
     .then(response => {
-      const action = gettingSearchedMarkets(response.body);
-      dispatch(action);
+      if (response.body.length > 0) {
+        const action = gettingSearchedMarkets(response.body);
+        dispatch(action);
+      } else {
+        request.get(`${baseUrl}/find`, { searched: keyword }).then(response => {
+          const action = fetchingMarkets(JSON.parse(response.body).results);
+          dispatch(action);
+        });
+      }
     })
     .catch(console.error);
 };

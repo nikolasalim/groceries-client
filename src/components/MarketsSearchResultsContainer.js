@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 import MarketsSearchResultsList from "./MarketsSearchResultsList";
+import AddMarketlist from "./AddMarketList";
 
 class MarketsSearchResultsContainer extends React.Component {
   state = { addMarketsRedirect: false };
@@ -20,7 +21,8 @@ class MarketsSearchResultsContainer extends React.Component {
         <div>
           {this.renderAddMarketRedirect()}
           <SearchBarMarketsContainer />
-          No markets were found. Please, try again or add one:
+          This market is not on our system yet. Add it now:
+          <AddMarketlist marketsFetched={this.props.markets.fetched} />
           <button
             onClick={() =>
               this.setState({

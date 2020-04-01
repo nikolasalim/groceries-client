@@ -19,7 +19,6 @@ class SearchBarMarketsContainer extends React.Component {
 
   renderSearchMarketsRedirect = () => {
     if (this.state.searchMarketsRedirect) {
-      console.log("state is:", this.state);
       return <Redirect to="/market/results" />;
     }
   };
