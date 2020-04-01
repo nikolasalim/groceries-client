@@ -8,6 +8,7 @@ import MarketDetailsContainer from "./components/MarketDetailsContainer";
 import AddMarketContainer from "./components/AddMarketContainer";
 import MapContainer from "./components/MapContainer";
 import Footer from "./components/Footer";
+import MarketsSearchResultsContainer from "./components/MarketsSearchResultsContainer";
 
 class App extends React.Component {
   render() {
@@ -15,8 +16,12 @@ class App extends React.Component {
       <Provider store={store}>
         <NavBarContainer />
         <Switch>
+          <Route
+            path="/market/results"
+            component={MarketsSearchResultsContainer}
+          />
           <Route path="/market/:marketId" component={MarketDetailsContainer} />
-          <Route path="/add-market" component={AddMarketContainer} />
+          <Route path="/market" component={AddMarketContainer} />
           <Route path="/map" component={MapContainer} />
           <Route path="/" component={MarketsListContainer} />
         </Switch>

@@ -8,8 +8,6 @@ import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
 class MarketsListContainer extends React.Component {
-  state = { addMarketsRedirect: false };
-
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(success, error, options);
     this.props.getAllMarkets();
@@ -43,68 +41,15 @@ class MarketsListContainer extends React.Component {
     return sorted;
   };
 
-  renderRedirect = () => {
-    if (this.state.addMarketsRedirect) {
-      console.log("state is:", this.state);
-      return <Redirect to="/add-market" />;
-    }
-  };
-
   render() {
     if (this.props.markets.list.length === 0) {
-      return (
-        <div>
-          {this.renderRedirect()}
-          No markets have been added yet.
-          <button
-            onClick={() =>
-              this.setState({
-                addMarketsRedirect: true
-              })
-            }
-          >
-            Add new market
-          </button>
-        </div>
-      );
-    }
-
-    if (this.props.markets.searched.length === 0) {
-      return (
-        <div>
-          {this.renderRedirect()}
-          <SearchBarMarketsContainer />
-          Markets close to you:
-          <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
-          <button
-            onClick={() =>
-              this.setState({
-                addMarketsRedirect: true
-              })
-            }
-          >
-            Add new market
-          </button>
-        </div>
-      );
+      return <div>No markets have been added yet.</div>;
     }
     return (
       <div>
-        {this.renderRedirect()}
         Markets close to you:
         <SearchBarMarketsContainer />
-        <MarketsList
-          markets={this.sortingMarkets(this.props.markets.searched)}
-        />
-        <button
-          onClick={() =>
-            this.setState({
-              addMarketsRedirect: true
-            })
-          }
-        >
-          Add new market
-        </button>
+        <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
       </div>
     );
   }
