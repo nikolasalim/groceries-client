@@ -15,13 +15,23 @@ class MarketDetailsContainer extends React.Component {
     this.props.removeProduct(marketId, productId);
   };
 
+  getName = marketList => {
+    const { marketId } = this.props.match.params;
+    const currentMarket = marketList.find(
+      market => market.id === Number(marketId)
+    );
+    return currentMarket.name;
+  };
+
   render() {
     const { marketId } = this.props.match.params;
 
     if (this.props.products.searched.length === 0) {
       return (
         <div>
+          <h3>{this.getName(this.props.markets.list)}</h3>
           <SearchBarProductsContainer marketId={marketId} />
+          Currently out-of-stock:
           <ProductsList
             products={this.props.products.list}
             stockHandler={this.stockHandler}
@@ -32,7 +42,9 @@ class MarketDetailsContainer extends React.Component {
     }
     return (
       <div>
+        <h3>{this.getName(this.props.markets.list)}</h3>
         <SearchBarProductsContainer marketId={marketId} />
+        Currently out-of-stock:
         <ProductsList
           products={this.props.products.searched}
           stockHandler={this.stockHandler}

@@ -77,6 +77,8 @@ export const createMarket = market => (dispatch, getState) => {
     .then(response => {
       const action = creatingMarket(response.body);
       dispatch(action);
+      dispatch({ type: "REDIRECT", payload: response.body.id });
+      dispatch({ type: "RESET_REDIRECT", payload: null });
     })
     .catch(console.error);
 };

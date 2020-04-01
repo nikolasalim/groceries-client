@@ -4,6 +4,14 @@ import moment from "moment";
 
 class ProductsList extends React.Component {
   render() {
+    if (this.props.products.length === 0) {
+      return (
+        <div>
+          <p>No products marked as out-of-stock.</p>
+          <AddProductFormContainer marketId={this.props.marketId} />
+        </div>
+      );
+    }
     return (
       <div>
         {this.props.products.map(product => {

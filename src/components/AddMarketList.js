@@ -1,34 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createMarket } from "../actions/marketsActions";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class AddMarketList extends React.Component {
-  // state = {
-  //   newMarketRedirect: false
-  // };
+  state = {
+    newMarketRedirect: false
+  };
 
   addHandler = marketInfo => {
     this.props.createMarket(marketInfo);
-    // this.setState({ newMarketRedirect: true });
+    this.setState({ newMarketRedirect: true });
   };
 
-  // renderRedirect = marketId => {
-  //   if (this.state.newMarketRedirect) {
-  //     console.log("this.props.markets is", this.props.markets);
-  //     return <Redirect to={`/market/${marketId}`} />;
-  //   }
-  // };
+  renderRedirect = () => {
+    if (this.props.redirectId) {
+      return <Redirect to={`/market/${this.props.redirectId}`} />;
+    }
+  };
 
   render() {
-    console.log("this.props.marketsFetched is:", this.props.marketsFetched);
     if (this.props.marketsFetched.length === 0) {
       return <p>No markets found.</p>;
     }
 
     return (
       <div>
-        {/* {this.renderRedirect()} */}
+        {this.renderRedirect()}
         {this.props.marketsFetched.map(market => {
           return (
             <div key={market.id}>
@@ -37,6 +35,7 @@ class AddMarketList extends React.Component {
               <button
                 onClick={() => {
                   this.addHandler(market);
+                  this.renderRedirect();
                 }}
               >
                 Add
@@ -50,7 +49,7 @@ class AddMarketList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { markets: state.markets };
+  return { markets: state.markets, redirectId: state.redirect };
 }
 
 const mapDispatchToProps = { createMarket };
