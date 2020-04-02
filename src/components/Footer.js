@@ -1,8 +1,18 @@
 import React from "react";
 
+import { Grid, Typography, Paper } from "@material-ui/core/";
+
 class Footer extends React.Component {
   render() {
-    return <div>Stay safe – do groceries, not war.</div>;
+    return (
+      <Grid container justify="center">
+        <Grid item>
+          <Typography variant="caption" gutterBottom>
+            Stay safe – Do groceries, no war.
+          </Typography>
+        </Grid>
+      </Grid>
+    );
   }
 }
 

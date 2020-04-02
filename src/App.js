@@ -10,22 +10,44 @@ import MapContainer from "./components/MapContainer";
 import Footer from "./components/Footer";
 import MarketsSearchResultsContainer from "./components/MarketsSearchResultsContainer";
 
+import { Grid } from "@material-ui/core/";
+
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <NavBarContainer />
-        <Switch>
-          <Route
-            path="/market/results"
-            component={MarketsSearchResultsContainer}
-          />
-          <Route path="/market/:marketId" component={MarketDetailsContainer} />
-          <Route path="/market" component={AddMarketContainer} />
-          <Route path="/map" component={MapContainer} />
-          <Route path="/" component={MarketsListContainer} />
-        </Switch>
-        <Footer />
+        <Grid
+          container
+          direction="column"
+          justify="space-around"
+          spacing={1}
+          justify="center"
+          alignItems="stretch"
+        >
+          <Grid item xs={12} style={{ paddingBottom: "70px" }}>
+            <NavBarContainer />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Switch>
+              <Route
+                path="/market/results"
+                component={MarketsSearchResultsContainer}
+              />
+              <Route
+                path="/market/:marketId"
+                component={MarketDetailsContainer}
+              />
+              <Route path="/market" component={AddMarketContainer} />
+              <Route path="/map" component={MapContainer} />
+              <Route path="/" component={MarketsListContainer} />
+            </Switch>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+        </Grid>
       </Provider>
     );
   }

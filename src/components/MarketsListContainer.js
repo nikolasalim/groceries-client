@@ -7,6 +7,9 @@ import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
+import { Typography } from "@material-ui/core";
+import ListSubheader from "@material-ui/core/ListSubheader";
+
 class MarketsListContainer extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -53,7 +56,10 @@ class MarketsListContainer extends React.Component {
     return (
       <div>
         <SearchBarMarketsContainer />
-        Markets close to you:
+
+        <ListSubheader component="div" id="nested-list-subheader">
+          Markets close to you:
+        </ListSubheader>
         <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
       </div>
     );
