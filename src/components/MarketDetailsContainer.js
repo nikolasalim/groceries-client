@@ -4,6 +4,8 @@ import ProductsList from "./ProductsList";
 import { removeProduct, getMarketProducts } from "../actions/productsActions";
 import SearchBarProductsContainer from "./SearchBarProductsContainer";
 
+import { Typography } from "@material-ui/core";
+
 class MarketDetailsContainer extends React.Component {
   componentDidMount() {
     const { marketId } = this.props.match.params;
@@ -29,8 +31,10 @@ class MarketDetailsContainer extends React.Component {
     if (this.props.products.list.length === 0) {
       return (
         <div>
-          <h3>{this.getName(this.props.markets.list)}</h3>
-          Currently out-of-stock:
+          <Typography variant="h6">
+            {this.getName(this.props.markets.list)}
+          </Typography>
+          <Typography variant="subtitle2">Currently out-of-stock:</Typography>
           <ProductsList
             products={this.props.products.list}
             stockHandler={this.stockHandler}
@@ -43,8 +47,10 @@ class MarketDetailsContainer extends React.Component {
     if (this.props.products.searched.length === 0) {
       return (
         <div>
-          <h3>{this.getName(this.props.markets.list)}</h3>
-          Currently out-of-stock:
+          <Typography variant="h6">
+            {this.getName(this.props.markets.list)}
+          </Typography>
+          <Typography variant="subtitle2">Currently out-of-stock:</Typography>
           <SearchBarProductsContainer marketId={marketId} />
           <ProductsList
             products={this.props.products.list}

@@ -5,6 +5,8 @@ import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 import MarketsSearchResultsList from "./MarketsSearchResultsList";
 import AddMarketlist from "./AddMarketList";
 
+import { Button, Typography } from "@material-ui/core";
+
 class MarketsSearchResultsContainer extends React.Component {
   state = { addMarketsRedirect: false };
 
@@ -21,7 +23,9 @@ class MarketsSearchResultsContainer extends React.Component {
         <div>
           {this.renderAddMarketRedirect()}
           <SearchBarMarketsContainer />
-          Is this the market you're looking for?
+          <Typography variant="subtitle2">
+            Is this the market you're looking for?
+          </Typography>
           <AddMarketlist marketsFetched={this.props.markets.fetched} />
         </div>
       );
@@ -32,8 +36,22 @@ class MarketsSearchResultsContainer extends React.Component {
         {this.renderAddMarketRedirect()}
         <SearchBarMarketsContainer />
         <MarketsSearchResultsList markets={this.props.markets.searched} />
-        Not the market you're looking for?
-        <button
+        <Typography variant="subtitle2">
+          Not the market you're looking for?
+        </Typography>
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={() =>
+            this.setState({
+              addMarketsRedirect: true
+            })
+          }
+        >
+          Find it!
+        </Button>
+        {/* <button
           onClick={() =>
             this.setState({
               addMarketsRedirect: true
@@ -41,7 +59,7 @@ class MarketsSearchResultsContainer extends React.Component {
           }
         >
           Find it
-        </button>
+        </button> */}
       </div>
     );
   }

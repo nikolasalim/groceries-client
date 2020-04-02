@@ -57,9 +57,7 @@ class MarketsListContainer extends React.Component {
       <div>
         <SearchBarMarketsContainer />
 
-        <ListSubheader component="div" id="nested-list-subheader">
-          Markets close to you:
-        </ListSubheader>
+        <Typography variant="subtitle2">Markets close to you:</Typography>
         <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
       </div>
     );

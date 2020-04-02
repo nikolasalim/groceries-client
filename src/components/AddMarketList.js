@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { createMarket } from "../actions/marketsActions";
 import { Redirect } from "react-router-dom";
 
+import { Button, Typography } from "@material-ui/core";
+
 class AddMarketList extends React.Component {
   state = {
     newMarketRedirect: false
@@ -21,7 +23,7 @@ class AddMarketList extends React.Component {
 
   render() {
     if (this.props.marketsFetched.length === 0) {
-      return <p>No markets found.</p>;
+      return <Typography variant="subtitle2">No markets found.</Typography>;
     }
 
     return (
@@ -32,14 +34,27 @@ class AddMarketList extends React.Component {
             <div key={market.id}>
               <h4>{market.name}</h4>
               <p>{market.formatted_address}</p>
-              <button
+
+              <Button
+                variant="contained"
+                size="small"
+                color="primary"
                 onClick={() => {
                   this.addHandler(market);
                   this.renderRedirect();
                 }}
               >
-                Yes!
-              </button>
+                Add!
+              </Button>
+
+              {/* <button
+                onClick={() => {
+                  this.addHandler(market);
+                  this.renderRedirect();
+                }}
+              >
+                Add!
+              </button> */}
             </div>
           );
         })}
