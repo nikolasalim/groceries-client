@@ -1,5 +1,6 @@
 import request from "superagent";
-const baseUrl = "http://localhost:4000";
+// const baseUrl = "http://localhost:4000";
+const baseUrl = "https://arcane-meadow-16290.herokuapp.com/";
 
 // Reading all markets:
 
