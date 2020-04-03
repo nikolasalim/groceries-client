@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Typography, Paper } from "@material-ui/core/";
+import { Grid, Typography } from "@material-ui/core/";
 
 class Footer extends React.Component {
   render() {

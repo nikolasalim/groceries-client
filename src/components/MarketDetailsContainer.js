@@ -1,11 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import ProductsList from "./ProductsList";
 import { removeProduct, getMarketProducts } from "../actions/productsActions";
-import SearchBarProductsContainer from "./SearchBarProductsContainer";
 import MarketDetails from "./MarketDetails";
-
-import { Typography } from "@material-ui/core";
 
 class MarketDetailsContainer extends React.Component {
   componentDidMount() {
@@ -38,54 +34,8 @@ class MarketDetailsContainer extends React.Component {
           products={this.props.products.list}
           stockHandler={this.stockHandler}
         />
-        {/* <ProductsList
-          products={this.props.products.list}
-          stockHandler={this.stockHandler}
-          marketId={marketId}
-        /> */}
       </div>
     );
-
-    // // No products to show:
-    // if (this.props.products.list.length === 0) {
-    //   return (
-    //     <div>
-    //       <MarketDetails marketName={marketName} />
-    //       <ProductsList
-    //         products={this.props.products.list}
-    //         stockHandler={this.stockHandler}
-    //         marketId={marketId}
-    //       />
-    //     </div>
-    //   );
-    // }
-
-    // // No products were searched:
-    // if (this.props.products.searched.length === 0) {
-    //   return (
-    //     <div>
-    //       <MarketDetails marketName={marketName} />
-
-    //       <ProductsList
-    //         products={this.props.products.list}
-    //         stockHandler={this.stockHandler}
-    //         marketId={marketId}
-    //       />
-    //     </div>
-    //   );
-    // }
-
-    // return (
-    //   <div>
-    //     <MarketDetails marketName={marketName} />
-
-    //     <ProductsList
-    //       products={this.props.products.searched}
-    //       stockHandler={this.stockHandler}
-    //       marketId={marketId}
-    //     />
-    //   </div>
-    // );
   }
 }
 

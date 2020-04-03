@@ -8,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 
-import { Button, Typography, Grid, Card } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 
 class MarketsSearchedList extends React.Component {
   state = { addMarketsRedirect: false };

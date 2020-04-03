@@ -21,7 +21,6 @@ class App extends React.Component {
           direction="row"
           justify="space-between"
           spacing={2}
-          justify="center"
           alignItems="stretch"
         >
           <Grid item xs={12} /* style={{ paddingBottom: "50px" }} */>

@@ -6,9 +6,6 @@ import AddMarketContainer from "./AddMarketContainer";
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
-import { Typography } from "@material-ui/core";
-import ListSubheader from "@material-ui/core/ListSubheader";
-
 class MarketsListContainer extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(success, error, options);

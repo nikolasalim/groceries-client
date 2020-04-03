@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 
 import {
@@ -48,22 +48,3 @@ class MarketsList extends React.Component {
 }
 
 export default MarketsList;
-
-{
-  /* <List component="nav" aria-label="secondary mailbox folder">
-  <ListItem
-    button
-    selected={selectedIndex === 2}
-    onClick={event => handleListItemClick(event, 2)}
-  >
-    <ListItemText primary="Trash" />
-  </ListItem>
-  <ListItem
-    button
-    selected={selectedIndex === 3}
-    onClick={event => handleListItemClick(event, 3)}
-  >
-    <ListItemText primary="Spam" />
-  </ListItem>
-</List>; */
-}

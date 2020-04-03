@@ -23,8 +23,6 @@ class MarketsFetchedList extends React.Component {
   };
 
   render() {
-    this.renderRedirect();
-
     if (this.props.marketsFetched.length === 0) {
       return (
         <Grid container justify="center" alignItems="center" spacing={1}>
@@ -80,6 +78,7 @@ class MarketsFetchedList extends React.Component {
                   </Grid>
 
                   <Grid item>
+                    {this.renderRedirect()}
                     <Button
                       variant="contained"
                       size="small"
