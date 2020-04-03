@@ -1,29 +1,49 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Typography,
+  Grid
+} from "@material-ui/core";
 
 class MarketsList extends React.Component {
   render() {
-    return this.props.markets.map(market => {
-      return (
-        <List key={market.id}>
-          <ListItem button component={Link} to={`/market/${market.id}`}>
-            <ListItemText primary={market.name} />
-          </ListItem>
-          <Divider />
-        </List>
-      );
+    return (
+      <Grid
+        style={{ marginTop: 5 }}
+        container
+        justify="center"
+        direction="column"
+        alignItems="center"
+        spacing={3}
+      >
+        <Grid item>
+          <SearchBarMarketsContainer />
+        </Grid>
 
-      // return (
-      //   <Link to={`/market/${market.id}`} key={market.id}>
-      //     <div>{market.name}</div>
-      //   </Link>
-      // );
-    });
+        <Grid item>
+          <Typography variant="subtitle2">Markets close to you:</Typography>
+        </Grid>
+
+        <Grid item>
+          {this.props.markets.map(market => {
+            return (
+              <List disablePadding={true} key={market.id}>
+                <ListItem button component={Link} to={`/market/${market.id}`}>
+                  <ListItemText primary={market.name} />
+                </ListItem>
+                <Divider />
+              </List>
+            );
+          })}
+        </Grid>
+      </Grid>
+    );
   }
 }
 

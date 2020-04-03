@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getAllMarkets } from "../actions/marketsActions";
 import MarketsList from "./MarketsList";
 import AddMarketContainer from "./AddMarketContainer";
-import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
+
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
@@ -55,9 +55,6 @@ class MarketsListContainer extends React.Component {
     }
     return (
       <div>
-        <SearchBarMarketsContainer />
-
-        <Typography variant="subtitle2">Markets close to you:</Typography>
         <MarketsList markets={this.sortingMarkets(this.props.markets.list)} />
       </div>
     );

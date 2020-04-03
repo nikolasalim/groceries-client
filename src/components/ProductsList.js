@@ -2,7 +2,7 @@ import React from "react";
 import AddProductFormContainer from "./AddProductFormContainer";
 import moment from "moment";
 
-import { Button, Typography, Paper, Grid } from "@material-ui/core";
+import { Button, Typography, Card, Grid } from "@material-ui/core";
 
 class ProductsList extends React.Component {
   render() {
@@ -20,8 +20,12 @@ class ProductsList extends React.Component {
       <div>
         {this.props.products.map(product => {
           return (
-            <Paper key={product.id}>
-              <Grid justify="center" style={{ padding: 10, margin: 20 }}>
+            <Grid
+              justify="center"
+              style={{ padding: 10, margin: "10px 0px" }}
+              key={product.id}
+            >
+              <Card variant="outlined ">
                 <Typography variant="subtitle1">{product.name}</Typography>
 
                 {product.updatedAt ? (
@@ -40,17 +44,15 @@ class ProductsList extends React.Component {
                 <Button
                   variant="contained"
                   size="small"
-                  color="primary"
+                  color="secondary"
                   onClick={() => this.props.stockHandler(product.id)}
                 >
-                  It's back in stock!
+                  <Typography variant="subtitle2">
+                    It's back in stock!
+                  </Typography>
                 </Button>
-              </Grid>
-
-              {/* <button onClick={() => this.props.stockHandler(product.id)}>
-                Back in Stock
-              </button> */}
-            </Paper>
+              </Card>
+            </Grid>
           );
         })}
         <AddProductFormContainer marketId={this.props.marketId} />

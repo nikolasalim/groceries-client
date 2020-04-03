@@ -18,13 +18,13 @@ class App extends React.Component {
       <Provider store={store}>
         <Grid
           container
-          direction="column"
-          justify="space-around"
-          spacing={1}
+          direction="row"
+          justify="space-between"
+          spacing={2}
           justify="center"
           alignItems="stretch"
         >
-          <Grid item xs={12} style={{ paddingBottom: "70px" }}>
+          <Grid item xs={12} /* style={{ paddingBottom: "50px" }} */>
             <NavBarContainer />
           </Grid>
 

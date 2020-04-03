@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Link from "@material-ui/core/Link";
 
 import { connect } from "react-redux";
 
@@ -18,30 +17,28 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <AppBar position=/* "static" */ "fixed" color="default">
+      <AppBar position="static" /* "fixed" */ color="primary">
         <Tabs
           value={0}
           indicatorColor="primary"
-          textColor="primary"
+          textColor="secondary"
           scrollButtons="auto"
-        
           centered
         >
-          <Tab style={{padding: "0px 40px"}} icon={<FormatListBulletedIcon />} component={Link} to="/" />
-          <Tab style={{padding: "0px 40px"}} icon={<RoomIcon />} component={Link} to="/map" />
+          <Tab
+            style={{ padding: "0px 40px" }}
+            icon={<FormatListBulletedIcon />}
+            component={Link}
+            to="/"
+          />
+          <Tab
+            style={{ padding: "0px 40px" }}
+            icon={<RoomIcon />}
+            component={Link}
+            to="/map"
+          />
         </Tabs>
       </AppBar>
-
-      // <div>
-      //   <span>
-      //     <Link to="/" onClick={this.handleClick}>
-      //       LOGO
-      //     </Link>
-      //   </span>
-      //   <span>
-      //     <Link to="/map">MAP</Link>
-      //   </span>
-      // </div>
     );
   }
 }
