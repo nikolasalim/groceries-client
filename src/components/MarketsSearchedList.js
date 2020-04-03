@@ -67,21 +67,6 @@ class MarketsSearchedList extends React.Component {
           <Grid item>
             <SearchBarMarketsContainer />
           </Grid>
-
-          {/* <Grid item>
-            <Button
-              variant="contained"
-              size="small"
-              color="secondary"
-              onClick={() =>
-                this.setState({
-                  addMarketsRedirect: true
-                })
-              }
-            >
-              Find it!
-            </Button>
-          </Grid> */}
         </Grid>
         {this.resetStore()}
       </Grid>

@@ -27,7 +27,12 @@ class MarketsFetchedList extends React.Component {
       return (
         <Grid container justify="center" alignItems="center" spacing={1}>
           <Grid item>
-            <Typography variant="subtitle2">No markets found.</Typography>
+            <Typography variant="subtitle2">
+              No markets found. Please, try again:
+            </Typography>
+          </Grid>
+          <Grid item>
+            <SearchBarMarketsContainer />
           </Grid>
         </Grid>
       );
