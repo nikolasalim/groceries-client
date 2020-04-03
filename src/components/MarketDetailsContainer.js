@@ -13,10 +13,10 @@ class MarketDetailsContainer extends React.Component {
     this.props.getMarketProducts(marketId);
   }
 
-  // stockHandler = productId => {
-  //   const { marketId } = this.props.match.params;
-  //   this.props.removeProduct(marketId, productId);
-  // };
+  stockHandler = productId => {
+    const { marketId } = this.props.match.params;
+    this.props.removeProduct(marketId, productId);
+  };
 
   getName = marketList => {
     const { marketId } = this.props.match.params;
@@ -36,6 +36,7 @@ class MarketDetailsContainer extends React.Component {
           marketName={marketName}
           marketId={marketId}
           products={this.props.products.list}
+          stockHandler={this.stockHandler}
         />
         {/* <ProductsList
           products={this.props.products.list}

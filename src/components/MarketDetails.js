@@ -4,10 +4,11 @@ import ProductsList from "./ProductsList";
 import { Button, Typography, Card, Grid } from "@material-ui/core";
 
 class MarketDetails extends React.Component {
-  stockHandler = productId => {
-    const { marketId } = this.props.match.params;
-    this.props.removeProduct(marketId, productId);
-  };
+  // stockHandler = productId => {
+  //   // const { marketId } = this.props.match.params;
+  //   const marketId = this.props.marketId;
+  //   this.props.removeProduct(marketId, productId);
+  // };
 
   render() {
     const marketId = this.props.marketId;
@@ -26,7 +27,7 @@ class MarketDetails extends React.Component {
         <Grid item>
           <ProductsList
             products={this.props.products}
-            stockHandler={this.stockHandler}
+            stockHandler={this.props.stockHandler}
             marketId={marketId}
           />
         </Grid>

@@ -53,8 +53,8 @@ class Map extends React.Component {
                 lng: Number(market.longitude)
               }}
               icon={{
-                url: "./media/cart.png",
-                scaledSize: new window.google.maps.Size(25, 25)
+                url: "./media/market.png",
+                scaledSize: new window.google.maps.Size(30, 30)
               }}
               onClick={() => {
                 this.setState({ selectedMarket: market });
@@ -68,7 +68,7 @@ class Map extends React.Component {
           position={{ lat: coord.lat, lng: coord.lng }}
           icon={{
             url: "./media/person.png",
-            scaledSize: new window.google.maps.Size(25, 25)
+            scaledSize: new window.google.maps.Size(30, 30)
           }}
         >
           <div>You are here</div>

@@ -8,7 +8,7 @@ class Footer extends React.Component {
       <Grid container justify="center">
         <Grid item>
           <Typography variant="caption" gutterBottom>
-            Stay safe – Do groceries, no war.
+            Stay safe ♥︎
           </Typography>
         </Grid>
       </Grid>
