@@ -17,7 +17,11 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <AppBar position="static" /* "fixed" */ color="primary">
+      <AppBar
+        position="static"
+        /* "fixed" */ color="primary"
+        onClick={this.handleClick}
+      >
         <Tabs
           value={0}
           indicatorColor="primary"

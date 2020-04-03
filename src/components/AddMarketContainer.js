@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AddForm from "./AddForm";
-import AddMarketlist from "./AddMarketList";
+import MarketsFetchedList from "./MarketsFetchedList";
 import { fetchMarkets } from "../actions/marketsActions";
 
 class AddMarketContainer extends React.Component {
@@ -33,7 +33,7 @@ class AddMarketContainer extends React.Component {
           onChange={this.onChange}
           values={this.state}
         />
-        <AddMarketlist marketsFetched={this.props.markets.fetched} />
+        <MarketsFetchedList marketsFetched={this.props.markets.fetched} />
       </div>
     );
   }

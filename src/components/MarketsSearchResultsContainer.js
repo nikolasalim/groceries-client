@@ -2,47 +2,41 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import SearchBarMarketsContainer from "./SearchBarMarketsContainer";
-import MarketsSearchResultsList from "./MarketsSearchResultsList";
-import AddMarketlist from "./AddMarketList";
+import MarketsSearchedList from "./MarketsSearchedList";
+import MarketsFetchedList from "./MarketsFetchedList";
 
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, Card, Grid } from "@material-ui/core";
 
 class MarketsSearchResultsContainer extends React.Component {
-  state = { addMarketsRedirect: false };
+  // state = { addMarketsRedirect: false };
 
-  renderAddMarketRedirect = () => {
-    if (this.state.addMarketsRedirect) {
-      console.log("state is:", this.state);
-      return <Redirect to="/market" />;
-    }
-  };
+  // renderAddMarketRedirect = () => {
+  //   if (this.state.addMarketsRedirect) {
+  //     console.log("state is:", this.state);
+  //     return <Redirect to="/market" />;
+  //   }
+  // };
 
   render() {
     if (this.props.markets.searched.length === 0) {
       return (
         <div>
-          {this.renderAddMarketRedirect()}
-          <SearchBarMarketsContainer />
-          <Typography variant="subtitle2">
-            Is this the market you're looking for?
-          </Typography>
-          <AddMarketlist marketsFetched={this.props.markets.fetched} />
+          {/* {this.renderAddMarketRedirect()} */}
+          {/* <SearchBarMarketsContainer /> */}
+          <MarketsFetchedList marketsFetched={this.props.markets.fetched} />
         </div>
       );
     }
 
     return (
       <div>
-        {this.renderAddMarketRedirect()}
-        <SearchBarMarketsContainer />
-        <MarketsSearchResultsList markets={this.props.markets.searched} />
-        <Typography variant="subtitle2">
-          Not the market you're looking for?
-        </Typography>
-        <Button
+        {/* {this.renderAddMarketRedirect()} */}
+        {/* <SearchBarMarketsContainer /> */}
+        <MarketsSearchedList marketsSearched={this.props.markets.searched} />
+        {/* <Button
           variant="contained"
           size="small"
-          color="primary"
+          color="secondary"
           onClick={() =>
             this.setState({
               addMarketsRedirect: true
@@ -50,16 +44,7 @@ class MarketsSearchResultsContainer extends React.Component {
           }
         >
           Find it!
-        </Button>
-        {/* <button
-          onClick={() =>
-            this.setState({
-              addMarketsRedirect: true
-            })
-          }
-        >
-          Find it
-        </button> */}
+        </Button> */}
       </div>
     );
   }
