@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getAllMarkets } from "../actions/marketsActions";
 import MarketsList from "./MarketsList";
 import AddMarketContainer from "./AddMarketContainer";
-
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 

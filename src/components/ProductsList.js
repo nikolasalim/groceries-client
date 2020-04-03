@@ -8,55 +8,91 @@ class ProductsList extends React.Component {
   render() {
     if (this.props.products.length === 0) {
       return (
-        <div>
-          <Typography variant="subtitle2">
-            No products marked as out-of-stock.
-          </Typography>
-          <AddProductFormContainer marketId={this.props.marketId} />
-        </div>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <Grid item>
+            <Typography variant="subtitle2">
+              No products marked as out-of-stock.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <AddProductFormContainer marketId={this.props.marketId} />
+          </Grid>
+        </Grid>
       );
     }
     return (
-      <div>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={2}
+      >
+        <Grid item>
+          <Typography variant="subtitle2">Currently out-of-stock:</Typography>
+        </Grid>
+
         {this.props.products.map(product => {
           return (
-            <Grid
-              justify="center"
-              style={{ padding: 10, margin: "10px 0px" }}
+            <Card
+              variant="outlined"
+              style={{ margin: "10px 0px" }}
               key={product.id}
             >
-              <Card variant="outlined ">
-                <Typography variant="subtitle1">{product.name}</Typography>
+              <Grid
+                item
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={1}
+                style={{ padding: 10 }}
+              >
+                <Grid item>
+                  <Typography variant="subtitle1">{product.name}</Typography>
+                </Grid>
 
-                {product.updatedAt ? (
-                  <Typography variant="subtitle2">
-                    Last update:{" "}
-                    {moment(product.updatedAt)
-                      .startOf("minute")
-                      .fromNow()}
-                  </Typography>
-                ) : (
-                  <Typography variant="subtitle2">
-                    Last update: just now
-                  </Typography>
-                )}
+                <Grid item>
+                  {product.updatedAt ? (
+                    <Typography variant="caption">
+                      Last update:{" "}
+                      {moment(product.updatedAt)
+                        .startOf("minute")
+                        .fromNow()}
+                    </Typography>
+                  ) : (
+                    <Typography variant="caption">
+                      Last update: just now
+                    </Typography>
+                  )}
+                </Grid>
 
-                <Button
-                  variant="contained"
-                  size="small"
-                  color="secondary"
-                  onClick={() => this.props.stockHandler(product.id)}
-                >
-                  <Typography variant="subtitle2">
-                    It's back in stock!
-                  </Typography>
-                </Button>
-              </Card>
-            </Grid>
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                    onClick={() => this.props.stockHandler(product.id)}
+                  >
+                    <Typography variant="subtitle2">
+                      It's back in stock!
+                    </Typography>
+                  </Button>
+                </Grid>
+              </Grid>
+            </Card>
           );
         })}
-        <AddProductFormContainer marketId={this.props.marketId} />
-      </div>
+        <Grid item>
+          <AddProductFormContainer marketId={this.props.marketId} />
+        </Grid>
+      </Grid>
     );
   }
 }

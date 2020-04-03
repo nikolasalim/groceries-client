@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ProductsList from "./ProductsList";
 import { removeProduct, getMarketProducts } from "../actions/productsActions";
 import SearchBarProductsContainer from "./SearchBarProductsContainer";
+import MarketDetails from "./MarketDetails";
 
 import { Typography } from "@material-ui/core";
 
@@ -12,10 +13,10 @@ class MarketDetailsContainer extends React.Component {
     this.props.getMarketProducts(marketId);
   }
 
-  stockHandler = productId => {
-    const { marketId } = this.props.match.params;
-    this.props.removeProduct(marketId, productId);
-  };
+  // stockHandler = productId => {
+  //   const { marketId } = this.props.match.params;
+  //   this.props.removeProduct(marketId, productId);
+  // };
 
   getName = marketList => {
     const { marketId } = this.props.match.params;
@@ -26,52 +27,64 @@ class MarketDetailsContainer extends React.Component {
   };
 
   render() {
+    const marketName = this.getName(this.props.markets.list);
     const { marketId } = this.props.match.params;
 
-    if (this.props.products.list.length === 0) {
-      return (
-        <div>
-          <Typography variant="h6">
-            {this.getName(this.props.markets.list)}
-          </Typography>
-          <Typography variant="subtitle2">Currently out-of-stock:</Typography>
-          <ProductsList
-            products={this.props.products.list}
-            stockHandler={this.stockHandler}
-            marketId={marketId}
-          />
-        </div>
-      );
-    }
-
-    if (this.props.products.searched.length === 0) {
-      return (
-        <div>
-          <Typography variant="h6">
-            {this.getName(this.props.markets.list)}
-          </Typography>
-          <Typography variant="subtitle2">Currently out-of-stock:</Typography>
-          <SearchBarProductsContainer marketId={marketId} />
-          <ProductsList
-            products={this.props.products.list}
-            stockHandler={this.stockHandler}
-            marketId={marketId}
-          />
-        </div>
-      );
-    }
     return (
       <div>
-        <h3>{this.getName(this.props.markets.list)}</h3>
-        <SearchBarProductsContainer marketId={marketId} />
-        Currently out-of-stock:
-        <ProductsList
-          products={this.props.products.searched}
+        <MarketDetails
+          marketName={marketName}
+          marketId={marketId}
+          products={this.props.products.list}
+        />
+        {/* <ProductsList
+          products={this.props.products.list}
           stockHandler={this.stockHandler}
           marketId={marketId}
-        />
+        /> */}
       </div>
     );
+
+    // // No products to show:
+    // if (this.props.products.list.length === 0) {
+    //   return (
+    //     <div>
+    //       <MarketDetails marketName={marketName} />
+    //       <ProductsList
+    //         products={this.props.products.list}
+    //         stockHandler={this.stockHandler}
+    //         marketId={marketId}
+    //       />
+    //     </div>
+    //   );
+    // }
+
+    // // No products were searched:
+    // if (this.props.products.searched.length === 0) {
+    //   return (
+    //     <div>
+    //       <MarketDetails marketName={marketName} />
+
+    //       <ProductsList
+    //         products={this.props.products.list}
+    //         stockHandler={this.stockHandler}
+    //         marketId={marketId}
+    //       />
+    //     </div>
+    //   );
+    // }
+
+    // return (
+    //   <div>
+    //     <MarketDetails marketName={marketName} />
+
+    //     <ProductsList
+    //       products={this.props.products.searched}
+    //       stockHandler={this.stockHandler}
+    //       marketId={marketId}
+    //     />
+    //   </div>
+    // );
   }
 }
 
