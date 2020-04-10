@@ -15,7 +15,7 @@ Any contribution is very much appreciated ♥︎
 
 # App demo
 
-To check out the currently deployed version, [click here.](https://whereshouldibuy.netlify.com/)
+To check out the currently deployed version, [click here.](https://wherecanibuy.netlify.com/)
 
 ![demo-gif](https://github.com/nikolasalim/supplies-tracker-client/blob/master/public/media/demo.gif)
 
