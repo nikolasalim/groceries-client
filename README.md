@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ☞ About
 
-## Available Scripts
+Supplies Tracker is a collaborative mobile platform to find out if supermarkets have run out of supplies and discover alternatives nearby.  
+Hopefully it can ease the supermarket chaos and help people stay safe during the COVID-19 crisis.
 
-In the project directory, you can run:
+Any contribution is very much appreciated ♥︎
 
-### `npm start`
+# Contents list
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [App demo](#App-demo)
+- [Technologies used](#technologies-used)
+- [Goals](#goals)
+- [Features](#features)
+- [Server repository](#☞-server-repository)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# App demo
 
-### `npm test`
+To check out the currently deployed version, [click here.](https://whereshouldibuy.netlify.com/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![demo-gif](https://github.com/nikolasalim/supplies-tracker-client/blob/master/public/media/demo.gif)
 
-### `npm run build`
+# Technologies used
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Click links to see samples in this project:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [React](https://github.com/nikolasalim/supplies-tracker-client/blob/master/src/App.js)
+- [Redux](https://github.com/nikolasalim/supplies-tracker-client/tree/master/src/actions)
+- [Express](https://github.com/nikolasalim/supplies-tracker-server/blob/master/index.js)
+  - [REST API](https://github.com/nikolasalim/supplies-tracker-server/blob/master/market/router.js)
+- [Sequelize (n:n)](https://github.com/nikolasalim/supplies-tracker-server/blob/master/market/model.js)
+- [Geolocation](https://github.com/nikolasalim/supplies-tracker-client/blob/master/src/extra/getCurrentPosition.js)
+- [Material-UI](https://github.com/nikolasalim/supplies-tracker-client/blob/master/src/components/MarketsList.js)
+- [Google Cloud Platform](https://github.com/nikolasalim/supplies-tracker-client/blob/master/src/components/Map.js)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Goals
 
-### `npm run eject`
+This project was built on a 2-week Codaisseur individual hackathon to help during the COVID-19 crisis.  
+My personal goal was to built a mobile-first full-stack application and experiment with technologies not covered during the Codaisseur bootcamp.  
+Breaking it down to more specific goals:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Practice full-stack development using what I've learned during the bootcamp;
+- Create a more organized and user-centered workflow – from wireframes to user stories and folders/components structuring;
+- Build a more complex relationship between my talbes to retrieve richer results on the backend;
+- Experiment with geolocation and React map-enabling libraries;
+- Explore different styling libraries;
+- Practice Git and Github using branches and its best practices;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- View a list of nearby supermarkets;
+- Search for supermarkets;
+- Add new supermarkets;
+- Mark products as out-of-stock for a specific supermarket;
+- Update products' out-of-stock status;
+- On the map: see supermarkets around you;
+- On the map: check out-of-stock products for each supermarket;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# ☞ Server repository
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The server side of this project is an Express server connected to a Sequelize database. [Click here for more details.](https://github.com/nikolasalim/supplies-tracker-server)
