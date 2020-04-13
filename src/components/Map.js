@@ -43,7 +43,6 @@ class Map extends React.Component {
         defaultZoom={14}
         defaultCenter={{ lat: coord.lat, lng: coord.lng }}
         // defaultOptions={{styles: [object]}}
-        style={{ overflow: "hidden" }}
       >
         {this.props.markets.list.map((market) => {
           return (

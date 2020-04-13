@@ -36,7 +36,7 @@ class App extends React.Component {
           <Grid
             item
             xs={12}
-            style={{ margin: 0, padding: 0, overflow: "hidden" }}
+            style={{ margin: 0, padding: "20px 0", overflow: "hidden" }}
           >
             <Switch>
               <Route
