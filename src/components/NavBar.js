@@ -10,6 +10,10 @@ import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import RoomIcon from "@material-ui/icons/Room";
 
 class NavBar extends React.Component {
+  state = {
+    menuToggle: 0,
+  };
+
   handleClick = () => {
     this.props.markets.searched = [];
     this.props.markets.fetched = [];
@@ -23,8 +27,8 @@ class NavBar extends React.Component {
         onClick={this.handleClick}
       >
         <Tabs
-          value={0}
-          indicatorColor="primary"
+          value={this.state.menuToggle}
+          indicatorColor="secondary"
           textColor="secondary"
           scrollButtons="auto"
           centered
@@ -34,12 +38,14 @@ class NavBar extends React.Component {
             icon={<FormatListBulletedIcon />}
             component={Link}
             to="/"
+            onClick={() => this.setState({ menuToggle: 0 })}
           />
           <Tab
             style={{ padding: "0px 40px" }}
             icon={<RoomIcon />}
             component={Link}
             to="/map"
+            onClick={() => this.setState({ menuToggle: 1 })}
           />
         </Tabs>
       </AppBar>

@@ -1,24 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeProduct, getMarketProducts } from "../actions/productsActions";
+import { getAllMarkets } from "../actions/marketsActions";
 import MarketDetails from "./MarketDetails";
 
 class MarketDetailsContainer extends React.Component {
   componentDidMount() {
     const { marketId } = this.props.match.params;
     this.props.getMarketProducts(marketId);
+    this.props.getAllMarkets();
   }
 
-  stockHandler = productId => {
+  stockHandler = (productId) => {
     const { marketId } = this.props.match.params;
     this.props.removeProduct(marketId, productId);
   };
 
-  getName = marketList => {
+  getName = (marketList) => {
     const { marketId } = this.props.match.params;
     const currentMarket = marketList.find(
-      market => market.id === Number(marketId)
+      (market) => market.id === Number(marketId)
     );
+    if (this.props.markets.list.length === 0) {
+      return null;
+    }
     return currentMarket.name;
   };
 
@@ -43,7 +48,7 @@ function mapStateToProps(state) {
   return { markets: state.markets, products: state.products };
 }
 
-const mapDispatchToProps = { removeProduct, getMarketProducts };
+const mapDispatchToProps = { removeProduct, getMarketProducts, getAllMarkets };
 
 export default connect(
   mapStateToProps,
