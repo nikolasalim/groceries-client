@@ -54,10 +54,16 @@ class MarketsListContainer extends React.Component {
     }
     if (this.props.markets.list === "none") {
       return (
-        <div>
-          <p>No markets have been added yet.</p>
-          <AddMarketContainer />
-        </div>
+        <Grid container justify="center" alignItems="center" spacing={1}>
+          <Grid item>
+            <Typography variant="subtitle2">
+              No markets have been added yet.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <AddMarketContainer />
+          </Grid>
+        </Grid>
       );
     }
     return (

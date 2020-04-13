@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import AddForm from "./AddForm";
-import MarketsFetchedList from "./MarketsFetchedList";
 import { fetchMarkets } from "../actions/marketsActions";
+
+import { Typography, Grid } from "@material-ui/core";
 
 class AddMarketContainer extends React.Component {
   state = {
@@ -31,24 +32,19 @@ class AddMarketContainer extends React.Component {
     }
   };
 
-  // this should be only the form and redirect to markets fetchedList on onSubmit
-
   render() {
     return (
-      <div>
+      <Grid container justify="center" alignItems="center" spacing={1}>
+        <Grid item>
+          <AddForm
+            placeholder={"Find market"}
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+        </Grid>
         {this.renderRedirect()}
-        Find and add a new market:
-        <AddForm
-          placeholder={"Find market"}
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          values={this.state}
-        />
-        {/* {this.props.markets.fetched.length > 0 ? (
-          <MarketsFetchedList marketsFetched={this.props.markets.fetched} />
-        ) : null} */}
-        {/* <MarketsFetchedList marketsFetched={this.props.markets.fetched} /> */}
-      </div>
+      </Grid>
     );
   }
 }
