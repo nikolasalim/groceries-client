@@ -6,6 +6,8 @@ import AddMarketContainer from "./AddMarketContainer";
 import getDistanceInKm from "../extra/getDistanceInKm";
 import { success, error, options, coord } from "../extra/getCurrentPosition";
 
+import { Typography, Grid } from "@material-ui/core";
+
 class MarketsListContainer extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -20,7 +22,7 @@ class MarketsListContainer extends React.Component {
 
   // Sorting markets by nearest location:
 
-  sortingMarkets = arr => {
+  sortingMarkets = (arr) => {
     const sorted = arr.sort((a, b) => {
       a = getDistanceInKm(
         coord.latitude,
@@ -42,6 +44,15 @@ class MarketsListContainer extends React.Component {
 
   render() {
     if (this.props.markets.list.length === 0) {
+      return (
+        <Grid container justify="center" alignItems="center" spacing={1}>
+          <Grid item>
+            <Typography variant="subtitle2">Loading...</Typography>
+          </Grid>
+        </Grid>
+      );
+    }
+    if (this.props.markets.list === "none") {
       return (
         <div>
           <p>No markets have been added yet.</p>

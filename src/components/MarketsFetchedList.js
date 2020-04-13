@@ -8,10 +8,10 @@ import { Button, Typography, Grid, Card } from "@material-ui/core";
 
 class MarketsFetchedList extends React.Component {
   state = {
-    newMarketRedirect: false
+    newMarketRedirect: false,
   };
 
-  addHandler = marketInfo => {
+  addHandler = (marketInfo) => {
     this.props.createMarket(marketInfo);
     this.setState({ newMarketRedirect: true });
   };
@@ -23,7 +23,7 @@ class MarketsFetchedList extends React.Component {
   };
 
   render() {
-    if (this.props.marketsFetched.length === 0) {
+    if (this.props.marketsFetched === "none") {
       return (
         <Grid container justify="center" alignItems="center" spacing={1}>
           <Grid item>
@@ -38,6 +38,15 @@ class MarketsFetchedList extends React.Component {
       );
     }
 
+    if (this.props.marketsFetched.length === 0) {
+      return (
+        <Grid container justify="center" alignItems="center" spacing={1}>
+          <Grid item>
+            <Typography variant="subtitle2">Loading...</Typography>
+          </Grid>
+        </Grid>
+      );
+    }
     return (
       <Grid
         container
@@ -57,7 +66,7 @@ class MarketsFetchedList extends React.Component {
           </Typography>
         </Grid>
         <Grid item>
-          {this.props.marketsFetched.map(market => {
+          {this.props.marketsFetched.map((market) => {
             return (
               <Card
                 variant="outlined"
@@ -107,7 +116,7 @@ class MarketsFetchedList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { markets: state.markets, redirectId: state.redirect };
+  return { /* markets: state.markets,  */ redirectId: state.redirect };
 }
 
 const mapDispatchToProps = { createMarket };

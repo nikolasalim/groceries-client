@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import MarketsSearchResultsContainer from "./components/MarketsSearchResultsContainer";
 
 import { Grid } from "@material-ui/core/";
+import MarketsFetchedListContainer from "./components/MarketsFetchedListContainer";
 
 class App extends React.Component {
   render() {
@@ -32,6 +33,10 @@ class App extends React.Component {
               <Route
                 path="/market/results"
                 component={MarketsSearchResultsContainer}
+              />
+              <Route
+                path="/market/search"
+                component={MarketsFetchedListContainer}
               />
               <Route
                 path="/market/:marketId"
