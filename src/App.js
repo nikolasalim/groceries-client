@@ -23,12 +23,21 @@ class App extends React.Component {
           justify="space-between"
           spacing={2}
           alignItems="stretch"
+          style={{ overflow: "hidden" }}
         >
-          <Grid item xs={12} /* style={{ paddingBottom: "50px" }} */>
+          <Grid
+            item
+            xs={12}
+            style={{ margin: 0, padding: 0, overflow: "hidden" }}
+          >
             <NavBarContainer />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid
+            item
+            xs={12}
+            style={{ margin: 0, padding: 0, overflow: "hidden" }}
+          >
             <Switch>
               <Route
                 path="/market/results"
@@ -48,7 +57,11 @@ class App extends React.Component {
             </Switch>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid
+            item
+            xs={12}
+            style={{ margin: 0, padding: 0, overflow: "hidden" }}
+          >
             <Footer />
           </Grid>
         </Grid>

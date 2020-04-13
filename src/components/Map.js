@@ -7,18 +7,18 @@ import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
-  maximumAge: 0
+  maximumAge: 0,
 };
 
 let coord = {
   lat: null,
-  lng: null
+  lng: null,
 };
 
 function success(pos) {
   coord = {
     lat: pos.coords.latitude,
-    lng: pos.coords.longitude
+    lng: pos.coords.longitude,
   };
   return coord;
 }
@@ -26,7 +26,7 @@ function success(pos) {
 function error(err) {
   coord = {
     lat: "blocked",
-    lng: "blocked"
+    lng: "blocked",
   };
   console.log("error is running");
   console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -43,18 +43,19 @@ class Map extends React.Component {
         defaultZoom={14}
         defaultCenter={{ lat: coord.lat, lng: coord.lng }}
         // defaultOptions={{styles: [object]}}
+        style={{ overflow: "hidden" }}
       >
-        {this.props.markets.list.map(market => {
+        {this.props.markets.list.map((market) => {
           return (
             <Marker
               key={market.id}
               position={{
                 lat: Number(market.latitude),
-                lng: Number(market.longitude)
+                lng: Number(market.longitude),
               }}
               icon={{
                 url: "./media/market.png",
-                scaledSize: new window.google.maps.Size(30, 30)
+                scaledSize: new window.google.maps.Size(30, 30),
               }}
               onClick={() => {
                 this.setState({ selectedMarket: market });
@@ -68,17 +69,15 @@ class Map extends React.Component {
           position={{ lat: coord.lat, lng: coord.lng }}
           icon={{
             url: "./media/person.png",
-            scaledSize: new window.google.maps.Size(30, 30)
+            scaledSize: new window.google.maps.Size(30, 30),
           }}
-        >
-          <div>You are here</div>
-        </Marker>
+        ></Marker>
 
         {this.state.selectedMarket && (
           <InfoWindow
             position={{
               lat: Number(this.state.selectedMarket.latitude),
-              lng: Number(this.state.selectedMarket.longitude)
+              lng: Number(this.state.selectedMarket.longitude),
             }}
             onCloseClick={() => this.setState({ selectedMarket: null })}
           >
@@ -90,7 +89,7 @@ class Map extends React.Component {
                 <u>Out-of-stock:</u>
               )}
 
-              {this.state.selectedMarket.oosProducts.map(product => (
+              {this.state.selectedMarket.oosProducts.map((product) => (
                 <p key={product.id}>{product.name}</p>
               ))}
             </div>

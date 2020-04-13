@@ -22,9 +22,11 @@ class NavBar extends React.Component {
   render() {
     return (
       <AppBar
+        elevation={0}
         position="static"
         /* "fixed" */ color="primary"
         onClick={this.handleClick}
+        style={{ padding: 0, margin: 0, overflow: "hidden" }}
       >
         <Tabs
           value={this.state.menuToggle}
