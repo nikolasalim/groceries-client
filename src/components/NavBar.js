@@ -26,11 +26,11 @@ class NavBar extends React.Component {
         position="static"
         /* "fixed" */ color="primary"
         onClick={this.handleClick}
-        style={{ padding: 0, margin: 0, overflow: "hidden" }}
+        style={{ padding: "5px 0px", margin: 0, overflow: "hidden" }}
       >
         <Tabs
           value={this.state.menuToggle}
-          indicatorColor="secondary"
+          indicatorColor="primary"
           textColor="secondary"
           scrollButtons="auto"
           centered

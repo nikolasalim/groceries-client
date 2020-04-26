@@ -15,8 +15,10 @@ class MarketDetails extends React.Component {
         alignItems="center"
         spacing={3}
       >
-        <Grid item>
-          <Typography variant="h6">{this.props.marketName}</Typography>
+        <Grid item style={{ padding: "40px 0px 0px 0px" }}>
+          <Typography variant="h6" color="primary">
+            {this.props.marketName}
+          </Typography>
         </Grid>
         <Grid item>
           <ProductsList

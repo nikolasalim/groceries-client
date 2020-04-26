@@ -58,7 +58,6 @@ class Map extends React.Component {
               }}
               onClick={() => {
                 this.setState({ selectedMarket: market });
-                console.log("state is", this.state);
               }}
             />
           );

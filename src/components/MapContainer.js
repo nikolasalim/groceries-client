@@ -15,7 +15,7 @@ class MapContainer extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "89vh" }}>
         <WrappedMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleKey}`}
           loadingElement={<div style={{ height: "100%" }} />}

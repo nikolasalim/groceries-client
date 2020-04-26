@@ -11,19 +11,19 @@ import Footer from "./components/Footer";
 import MarketsSearchResultsContainer from "./components/MarketsSearchResultsContainer";
 
 import { Grid } from "@material-ui/core/";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import MarketsFetchedListContainer from "./components/MarketsFetchedListContainer";
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
+        <CssBaseline />
         <Grid
           container
           direction="row"
           justify="space-between"
-          spacing={2}
           alignItems="stretch"
-          style={{ overflow: "hidden" }}
         >
           <Grid
             item
@@ -36,7 +36,7 @@ class App extends React.Component {
           <Grid
             item
             xs={12}
-            style={{ margin: 0, padding: "20px 0", overflow: "hidden" }}
+            style={{ margin: 0, padding: 0, overflow: "hidden" }}
           >
             <Switch>
               <Route

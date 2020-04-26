@@ -4,14 +4,22 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
-import blueGrey from "@material-ui/core/colors/blueGrey";
-import teal from "@material-ui/core/colors/teal";
+import blue from "@material-ui/core/colors/blue";
+import indigo from "@material-ui/core/colors/indigo";
+import grey from "@material-ui/core/colors/grey";
 
 const theme = createMuiTheme({
   palette: {
-    primary: blueGrey,
-    secondary: teal
-  }
+    // background: {
+    //   default: "#3d5afe",
+    // },
+    primary: {
+      main: "#3d5afe",
+    },
+    secondary: {
+      main: "#fafafa",
+    },
+  },
 });
 
 ReactDOM.render(

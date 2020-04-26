@@ -38,7 +38,7 @@ class ProductsList extends React.Component {
           <Typography variant="subtitle2">Currently out-of-stock:</Typography>
         </Grid>
 
-        {this.props.products.map(product => {
+        {this.props.products.map((product) => {
           return (
             <Card
               variant="outlined"
@@ -62,9 +62,7 @@ class ProductsList extends React.Component {
                   {product.updatedAt ? (
                     <Typography variant="caption">
                       Last update:{" "}
-                      {moment(product.updatedAt)
-                        .startOf("minute")
-                        .fromNow()}
+                      {moment(product.updatedAt).startOf("minute").fromNow()}
                     </Typography>
                   ) : (
                     <Typography variant="caption">
@@ -75,12 +73,12 @@ class ProductsList extends React.Component {
 
                 <Grid item>
                   <Button
-                    variant="contained"
+                    variant="outlined"
                     size="small"
-                    color="secondary"
+                    color="primary"
                     onClick={() => this.props.stockHandler(product.id)}
                   >
-                    <Typography variant="subtitle2">
+                    <Typography variant="caption">
                       It's back in stock!
                     </Typography>
                   </Button>

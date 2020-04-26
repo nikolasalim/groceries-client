@@ -8,7 +8,7 @@ import {
   ListItemText,
   Divider,
   Typography,
-  Grid
+  Grid,
 } from "@material-ui/core";
 
 class MarketsList extends React.Component {
@@ -30,12 +30,14 @@ class MarketsList extends React.Component {
           <Typography variant="subtitle2">Markets close to you:</Typography>
         </Grid>
 
-        <Grid item>
-          {this.props.markets.map(market => {
+        <Grid item color="primary">
+          {this.props.markets.map((market) => {
             return (
               <List disablePadding={true} key={market.id}>
                 <ListItem button component={Link} to={`/market/${market.id}`}>
-                  <ListItemText primary={market.name} />
+                  <Typography variant="subtitle1" color="primary">
+                    {market.name}
+                  </Typography>
                 </ListItem>
                 <Divider />
               </List>
