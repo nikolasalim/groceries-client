@@ -83,7 +83,9 @@ class MarketsFetchedList extends React.Component {
                   style={{ padding: 10 }}
                 >
                   <Grid item>
-                    <Typography variant="h6">{market.name}</Typography>
+                    <Typography variant="subtitle1" color="primary">
+                      {market.name}
+                    </Typography>
                   </Grid>
                   <Grid item>
                     <Typography variant="subtitle2">
@@ -94,15 +96,15 @@ class MarketsFetchedList extends React.Component {
                   <Grid item>
                     {this.renderRedirect()}
                     <Button
-                      variant="contained"
+                      variant="outlined"
                       size="small"
-                      color="secondary"
+                      color="primary"
                       onClick={() => {
                         this.addHandler(market);
                         this.renderRedirect();
                       }}
                     >
-                      Add!
+                      <Typography variant="caption">Add! </Typography>
                     </Button>
                   </Grid>
                 </Grid>

@@ -37,11 +37,13 @@ class MarketsSearchedList extends React.Component {
       >
         {this.renderAddMarketRedirect()}
         <Grid item>
-          {this.props.marketsSearched.map(market => {
+          {this.props.marketsSearched.map((market) => {
             return (
               <List key={market.id}>
                 <ListItem button component={Link} to={`/market/${market.id}`}>
-                  <ListItemText primary={market.name} />
+                  <Typography variant="subtitle1" color="primary">
+                    {market.name}
+                  </Typography>
                 </ListItem>
                 <Divider />
               </List>

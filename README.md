@@ -3,7 +3,7 @@
 Supplies Tracker is a collaborative mobile platform to find out if supermarkets have run out of supplies and discover alternatives nearby.  
 Hopefully it can ease the supermarket chaos and help people stay safe during the COVID-19 crisis.
 
-Any contribution is very much appreciated ♥︎
+It is still a work in progress, so any contribution is very much appreciated ♥︎
 
 # Contents list
 
@@ -40,7 +40,7 @@ Breaking it down to more specific goals:
 
 - Practice full-stack development using what I've learned during the bootcamp;
 - Create a more organized and user-centered workflow – from wireframes to user stories and folders/components structuring;
-- Build a more complex relationship between my talbes to retrieve richer results on the backend;
+- Build a more complex relationship between my tables to retrieve richer results on the backend;
 - Experiment with geolocation and React map-enabling libraries;
 - Explore different styling libraries;
 - Practice Git and Github using branches and its best practices;

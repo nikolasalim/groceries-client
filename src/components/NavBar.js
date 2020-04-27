@@ -30,7 +30,7 @@ class NavBar extends React.Component {
       >
         <Tabs
           value={this.state.menuToggle}
-          indicatorColor="primary"
+          indicatorColor="secondary"
           textColor="secondary"
           scrollButtons="auto"
           centered
